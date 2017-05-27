@@ -1,6 +1,6 @@
 import { TinyappApiPage } from './app.po';
 
-describe('tinyapp-api App', () => {
+describe('tinyapp-ng App', () => {
   let page: TinyappApiPage;
 
   beforeEach(() => {

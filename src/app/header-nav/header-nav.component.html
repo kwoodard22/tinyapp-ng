@@ -1,0 +1,30 @@
+<div class="navbar-fixed">
+  <nav  role="navigation">
+
+    <div class="nav-wrapper blue ">
+      <a [routerLink]="['']" id="logo-container" class="brand-logo">Tiny Dwellings</a>
+
+      <ul class="right hide-on-med-and-down">
+
+        <li *ngIf="!tokenAuthService.userSignedIn()">
+          <a (click)="presentAuthentication()">LOGIN</a>
+        </li>
+        <li *ngIf="!tokenAuthService.userSignedIn()">
+          <a (click)="presentAuthentication()">REGISTER</a>
+        </li>
+
+        <li *ngIf="tokenAuthService.userSignedIn()">
+          <a [routerLink]="['/profile']">PROFILE</a>
+        </li>
+        <li *ngIf="tokenAuthService.userSignedIn()">
+          <a >LOGOUT</a>
+        </li>
+
+      </ul>
+
+    </div>
+
+  </nav>
+</div>
+
+<app-authentication #authentication></app-authentication>
