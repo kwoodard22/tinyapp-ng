@@ -6,24 +6,13 @@
 
       <ul class="right hide-on-med-and-down">
 
-        <li *ngIf="!tokenAuthService.userSignedIn()">
-          <a (click)="presentAuthentication()">LOGIN</a>
-        </li>
-        <li *ngIf="!tokenAuthService.userSignedIn()">
-          <a (click)="presentAuthentication()">REGISTER</a>
-        </li>
-
-        <li *ngIf="tokenAuthService.userSignedIn()">
-          <a [routerLink]="['/profile']">PROFILE</a>
-        </li>
-        <li *ngIf="tokenAuthService.userSignedIn()">
-          <a >LOGOUT</a>
-        </li>
+        <li *ngIf="(!authService.userSignedIn$ | async)"><a (click)="presentAuthentication()">LOGIN</a></li>
+        <li *ngIf="(!authService.userSignedIn$ | async)"><a (click)="presentAuthentication()">REGISTER</a></li>
+        <li *ngIf="(authService.userSignedIn$ | async)"><a [routerLink]="['/profile']">PROFILE</a></li>
+        <li *ngIf="(authService.userSignedIn$ | async)"><a (click)="logOut()">LOGOUT</a></li>
 
       </ul>
-
     </div>
-
   </nav>
 </div>
 

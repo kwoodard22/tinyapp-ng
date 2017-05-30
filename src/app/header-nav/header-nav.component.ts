@@ -1,19 +1,24 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AuthenticationComponent } from "../authentication/authentication.component";
-import { Angular2TokenService } from "angular2-token";
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header-nav',
   templateUrl: './header-nav.component.html',
   styleUrls: ['./header-nav.component.sass']
 })
+
 export class HeaderNavComponent implements OnInit {
 
   @ViewChild('authentication') authentication: AuthenticationComponent;
 
-  constructor(public tokenAuthService:Angular2TokenService) { }
+  constructor(public authService:AuthService, private router:Router) { }
 
-  ngOnInit() {
+  ngOnInit() { }
+
+  logOut() {
+    this.authService.logOutUser().subscribe(() => this.router.navigate(['/']));
   }
 
   presentAuthentication(mode?: 'login' | 'register') {
