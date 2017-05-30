@@ -6,8 +6,8 @@
 
       <ul class="right hide-on-med-and-down">
 
-        <li *ngIf="(!authService.userSignedIn$ | async)"><a (click)="presentAuthentication()">LOGIN</a></li>
-        <li *ngIf="(!authService.userSignedIn$ | async)"><a (click)="presentAuthentication()">REGISTER</a></li>
+        <li *ngIf="!(authService.userSignedIn$ | async)"><a (click)="presentAuthentication()">LOGIN</a></li>
+        <li *ngIf="!(authService.userSignedIn$ | async)"><a (click)="presentAuthentication()">REGISTER</a></li>
         <li *ngIf="(authService.userSignedIn$ | async)"><a [routerLink]="['/profile']">PROFILE</a></li>
         <li *ngIf="(authService.userSignedIn$ | async)"><a (click)="logOut()">LOGOUT</a></li>
 
